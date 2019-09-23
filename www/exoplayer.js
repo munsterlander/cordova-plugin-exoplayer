@@ -29,6 +29,9 @@ module.exports = {
     setStream: function (url, controller, successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "ExoPlayer", "setStream", [url, controller]);
     },
+    getBase64Frame: function (successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "ExoPlayer", "getBase64Frame", []);
+    },
     playPause: function (successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "ExoPlayer", "playPause", []);
     },
