@@ -363,6 +363,7 @@ public class Player {
     }
  
     public JSONObject getBase64Frame() {
+      JSONObject json = new JSONObject();
       if (null != exoView) {
          TextureView textureView = (TextureView) exoView.getVideoSurfaceView();
          Bitmap bitmap = textureView.getBitmap();
@@ -372,10 +373,9 @@ public class Player {
          byte[] byteArray = byteArrayOutputStream .toByteArray();
 
          String encoded = Base64.encodeToString(byteArray, Base64.NO_WRAP);
-         JSONObject json = new JSONObject();
          json.put("imgData", encoded);
-         return json;
       }
+      return json;
    }
 
     public void playPause() {
