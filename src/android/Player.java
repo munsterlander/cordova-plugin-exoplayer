@@ -362,7 +362,7 @@ public class Player {
         setController(controller);
     }
  
-    public String getBase64Frame() {
+    public JSONObject getBase64Frame() {
       if (null != exoView) {
          TextureView textureView = (TextureView) exoView.getVideoSurfaceView();
          Bitmap bitmap = textureView.getBitmap();
