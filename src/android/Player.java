@@ -373,7 +373,11 @@ public class Player {
          byte[] byteArray = byteArrayOutputStream .toByteArray();
 
          String encoded = Base64.encodeToString(byteArray, Base64.NO_WRAP);
-         json.put("imgData", encoded);
+         try {
+           json.put("imgData", encoded);
+         } catch (JSONException e) {
+           sendError(e.getMessage());
+         } 
       }
       return json;
    }
