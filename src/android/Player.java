@@ -363,8 +363,8 @@ public class Player {
     }
  
     public String getBase64Frame() {
-      if (null != exoPlayer) {
-         TextureView textureView = (TextureView) simpleExoPlayerView.getVideoSurfaceView();
+      if (null != exoView) {
+         TextureView textureView = (TextureView) exoView.getVideoSurfaceView();
          Bitmap bitmap = textureView.getBitmap();
 
          ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();  
