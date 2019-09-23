@@ -31,6 +31,8 @@ import android.os.*;
 import android.util.*;
 import android.view.*;
 import android.widget.*;
+import android.graphics.*;
+import android.view.*;
 import com.google.android.exoplayer2.*;
 import com.google.android.exoplayer2.extractor.*;
 import com.google.android.exoplayer2.source.*;
@@ -42,6 +44,8 @@ import com.google.android.exoplayer2.ui.*;
 import com.google.android.exoplayer2.upstream.*;
 import com.google.android.exoplayer2.util.*;
 import com.squareup.picasso.*;
+import java.io.*;
+import java.util.*;
 import java.lang.*;
 import java.lang.Math;
 import java.lang.Override;
@@ -358,6 +362,21 @@ public class Player {
         }
         setController(controller);
     }
+ 
+    public String getBase64Frame() {
+      if (null != exoPlayer) {
+         TextureView textureView = (TextureView) simpleExoPlayerView.getVideoSurfaceView();
+         Bitmap bitmap = textureView.getBitmap();
+
+         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();  
+         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+         byte[] byteArray = byteArrayOutputStream .toByteArray();
+
+         String encoded = Base64.encodeToString(byteArray, Base64.NO_WRAP);
+
+         return encoded;
+      }
+   }
 
     public void playPause() {
         if (this.paused) {
