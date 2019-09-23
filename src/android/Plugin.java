@@ -49,6 +49,18 @@ public class Plugin extends CordovaPlugin {
                 });
                 return true;
             }
+            else if (action.equals("getBase64Frame")) {
+                if (self.player == null) {
+                    return false;
+                }
+                cordova.getActivity().runOnUiThread(new Runnable() {
+                    public void run() {
+                        String response = self.player.getBase64Frame();
+                        new CallbackResponse(callbackContext).send(PluginResult.Status.OK,response, true);
+                    }
+                });
+                return true;
+            }         
             else if (action.equals("setStream")) {
                 if (self.player == null) {
                     return false;
