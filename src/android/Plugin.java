@@ -56,9 +56,14 @@ public class Plugin extends CordovaPlugin {
                 }
                 cordova.getActivity().runOnUiThread(new Runnable() {
                     public void run() {
-                        JSONObject response = self.player.getBase64Frame();
-                        System.out.println("getBase64Frame responded: "+response);
+                       try { 
+                         JSONObject response = self.player.getBase64Frame();
+                         System.out.println("getBase64Frame responded: "+response);
                         new CallbackResponse(callbackContext).send(PluginResult.Status.OK,response, true);
+                        } catch (Exception e) {
+                            new CallbackResponse(callbackContext).send(PluginResult.Status.JSON_EXCEPTION, false);
+                            return false;
+                        }
                     }
                 });
                 return true;
