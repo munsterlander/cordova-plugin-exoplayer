@@ -362,7 +362,7 @@ public class Player {
         setController(controller);
     }
  
-    public JSONObject getBase64Frame() {
+    public JSONObject getBase64Frame() Throws JSONException {
       JSONObject json = new JSONObject();
       if (null != exoView) {
          TextureView textureView = (TextureView) exoView.getVideoSurfaceView();
@@ -373,11 +373,9 @@ public class Player {
          byte[] byteArray = byteArrayOutputStream .toByteArray();
 
          String encoded = Base64.encodeToString(byteArray, Base64.NO_WRAP);
-         try {
-           json.put("imgData", encoded);
-         } catch (JSONException e) {
-           sendError(e.getMessage());
-         } 
+         json.put("imgData", encoded);
+      } else {
+        json.put("Error", "No view available");
       }
       return json;
    }
