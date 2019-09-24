@@ -375,7 +375,7 @@ public class Player {
          String encoded = Base64.encodeToString(byteArray, Base64.NO_WRAP);
          json.put("imgData", encoded);
       } else {
-        json.put("Error", "No view available");
+        json.put("imgData", "No view available");
       }
       return json;
    }
