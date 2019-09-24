@@ -363,20 +363,29 @@ public class Player {
     }
  
     public JSONObject getBase64Frame() Throws JSONException {
+     System.out.println("getBase64Frame function called.");
       JSONObject json = new JSONObject();
       if (null != exoView) {
+       System.out.println("getBase64Frame view found.");
          TextureView textureView = (TextureView) exoView.getVideoSurfaceView();
+       System.out.println("getBase64Frame converted texture.");
          Bitmap bitmap = textureView.getBitmap();
-
-         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();  
+       System.out.println("getBase64Frame converted bitmap.");
+         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(); 
+       System.out.println("getBase64Frame byteArray initialized.");
          bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+       System.out.println("getBase64Frame bitmap compressed.");
          byte[] byteArray = byteArrayOutputStream .toByteArray();
-
+       System.out.println("getBase64Frame byteArray created.");
          String encoded = Base64.encodeToString(byteArray, Base64.NO_WRAP);
+       System.out.println("getBase64Frame base64 completed with "+encoded);
          json.put("imgData", encoded);
+       System.out.println("getBase64Frame pushed to json.");
       } else {
+       System.out.println("getBase64Frame no view found.");
         json.put("imgData", "No view available");
       }
+     System.out.println("getBase64Frame function finished.");
       return json;
    }
 
