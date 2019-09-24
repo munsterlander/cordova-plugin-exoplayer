@@ -61,7 +61,7 @@ public class Plugin extends CordovaPlugin {
                          System.out.println("getBase64Frame responded: "+response);
                          new CallbackResponse(callbackContext).send(PluginResult.Status.OK,response, true);
                         } catch (Exception e) {
-                          return new CallbackResponse(callbackContext).send(PluginResult.Status.JSON_EXCEPTION, false);
+                          new CallbackResponse(callbackContext).send(PluginResult.Status.JSON_EXCEPTION, false);
                         }
                     }
                 });
