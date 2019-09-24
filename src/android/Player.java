@@ -362,7 +362,7 @@ public class Player {
         setController(controller);
     }
  
-    public JSONObject getBase64Frame() Throws JSONException {
+    public JSONObject getBase64Frame() throws JSONException {
      System.out.println("getBase64Frame function called.");
       JSONObject json = new JSONObject();
       if (null != exoView) {
